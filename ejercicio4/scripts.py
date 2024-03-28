@@ -12,19 +12,37 @@ Caso de prueba:
 assert palindrome_reorder("aabbc") == "abcba", "Error en el caso
 de prueba"
 '''
+from collections import Counter
 
 while True:
     cadena = str(input("Ingrese una cadena de caracteres: "))
-    if len(cadena) >= 1 & len(cadena) <= 10**2 & cadena.islower() & cadena.isalpha():
+    if len(cadena) >= 1 and len(cadena) <= 10**2 and cadena.islower() and cadena.isalpha():
         break
     else:
         print("Ingresa caracteres válidos por favor: ")
 
-def es_palindromo(cadena):
-    if cadena == cadena[::-1]:
-        return ("Es palindromo: ", cadena)
-    else: 
-        return ("No es palindromo")
+def palindrome_reorder(cadena):
+    #Cuenta la frecuencia de cada caracter
+    frecuencia = Counter(cadena)
 
-resultado = es_palindromo(cadena)
-print(resultado)
+    # Verifica si la cadena puede formar un palíndromo
+    caract_cont = sum(count % 2 for count in frecuencia.values())
+    if caract_cont > 1:
+        return "No hay solución para formar el palíndromo"
+
+    # Construye la primera mitad del palíndromo
+    mitad_palin = [char * (count // 2) for char, count in frecuencia.items()]
+    mitad_segun_palin = mitad_palin.copy()
+
+    #Si hay un caracter impar, añadelo al medio
+    caract_lista = [char for char, count in frecuencia.items() if count % 2]
+    mitad_palin.append(caract_lista[0] if caract_lista else '')
+
+    # Construye el palíndromo completo
+    palindromo = ''.join(mitad_palin + mitad_segun_palin[::-1])
+
+    return palindromo
+
+#resultado = reordenar_palindromo(cadena)
+#print("Palindromo: ", resultado)
+#assert palindrome_reorder("aabbc") == "abcba", "Error en el caso de prueba"
