@@ -19,7 +19,7 @@ matriz = [[1, 2, 3, 4, 5],
     [16, 17, 18, 19, 20],
     [21, 22, 23, 24, 25]]
 
-def spiral(m):
+'''def spiral(m):
  a=[]
  t=list(zip(*m)) # Obtienes las columnas por la función zip
 
@@ -27,22 +27,23 @@ def spiral(m):
   if m==[]:
     break
   m=list(zip(*t)) # zip t te dará la misma matriz m. Es necesario para la iteración
-  a.extend(m.pop(0)) # Paso 1 : abre la primera fila
+  a.extend(m.pop(0)) # Abre la primera fila
   if m==[]:
     break
   t=list(zip(*m))
-  a.extend(t.pop(-1)) # Paso 2: saca la última columna
+  a.extend(t.pop(-1)) #saca la última columna
   if m==[]:
     break
   m=list(zip(*t))
-  a.extend(m.pop(-1)[::-1]) # Paso 3: coloca la última fila en orden inverso
+  a.extend(m.pop(-1)[::-1]) #coloca la última fila en orden inverso
   if m==[]:
     break
   t=list(zip(*m)) 
-  a.extend(t.pop(0)[::-1]) # Paso 4: coloca la primera columna en orden inverso
+  a.extend(t.pop(0)[::-1]) #coloca la primera columna en orden inverso
  return a
+ '''
 
-def obtener_valor(x, y):
+def number_spiral(x, y):
     if x > y:
         if x % 2 == 0:
             return x * x - y + 1
@@ -55,8 +56,9 @@ def obtener_valor(x, y):
             return y * y - x + 1
 
 
-espiral = spiral(matriz)
+#espiral = spiral(matriz)
 #valor = obtener_valor(1,4) #(fila,columna)
 #print(valor)
 
-assert obtener_valor(2, 2) == 3, "Error en el caso de prueba"
+assert number_spiral(2, 2) == 25, "Error en el caso de prueba"
+#El resultado de (2, 2) == 3

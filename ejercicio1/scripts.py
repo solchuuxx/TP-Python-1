@@ -17,18 +17,24 @@ Caso de prueba:
 assert weird_algorithm(3) == [3, 10, 5, 16, 8, 4, 2, 1], "Error en
 el caso de prueba"'''
 
-num_positivo = 17
+num_positivo = 0
 lista = []
 
-def funcion(num_positivo):
-    while num_positivo != 1:
-            if num_positivo % 2 == 0:
-                num_positivo = num_positivo // 2
-                lista = [num_positivo]
-                print(lista)
-            else:
-                num_positivo = num_positivo * 3 + 1
-                lista = [num_positivo]
-                print(lista)
+def weird_algorithm(num_positivo):
+    lista = [num_positivo]
+    actual = num_positivo   #Almacena el valor actual
+    while actual != 1:
+        if actual % 2 == 0:
+            actual = actual // 2
+        else:
+            actual = actual * 3 + 1
+        lista.append(actual)  #agrega el valor actual a la lista
+    return lista
 
-funcion(num_positivo)
+#weird_algorithm(num_positivo)
+resultado = weird_algorithm(3)
+print(resultado)
+
+# Test
+assert resultado == [3, 10, 5, 16, 8, 4, 2, 1], "Error en el caso de prueba"
+#El codigo se ejecuta y finaliza correctamente ya que no hay ningun error.

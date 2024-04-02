@@ -13,24 +13,35 @@ Caso de prueba:
 assert missing_number(5, [1, 2, 4, 5]) == 3, "Error en el caso de
 prueba"
 '''
-import random
+
+#Codigo para ingresar un numero, proporciona la lista de numeros hasta el numero que se ingresó y luego eliminar uno sin saber cuál es.
+'''import random
 
 numero = int(input("Por favor, ingrese un número mayor que 1 y entero: "))
 numeros = []
 
+#Se forma la lista de los numeros
 for i in range(1, numero + 1):
     numeros.append(i)
 
+#Elimina un numero aleatorio de la lista
 numero_eliminar = random.choice(numeros)
 numeros.remove(numero_eliminar)
+'''
 
-def buscarNumero(numero, numeros):
+#Se busca el numero eliminado mediante calculos
+def missing_number(numero, numeros):
     suma_total = (numero * (numero + 1)) // 2 
     suma_dados = sum(numeros)  
     numero_faltante = suma_total - suma_dados
+    print("Lista: " + str(numeros) + " Numero faltante: " + str(numero_faltante))
     return numero_faltante
 
-resultadoNum = buscarNumero(numero, numeros)
+assert missing_number(5, [1, 2, 4, 5]) == 3, "Error en el caso de prueba"
+print("Prueba exitosa")
 
-print("Lista: " + str(numeros) + " Numero faltante: " + str(resultadoNum))
+
+#...
+'''resultadoNum = missing_number(numero, numeros)
+print("Lista: " + str(numeros) + " Numero faltante: " + str(resultadoNum))'''
 
